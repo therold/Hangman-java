@@ -1,5 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class WordGameTest {
 
@@ -14,6 +16,15 @@ public class WordGameTest {
     WordGame testWordGame = new WordGame("test");
     String expected = "test";
     assertEquals(expected, testWordGame.getWord());
+  }
+
+  @Test
+  public void getGuesses_returnsAllGuesses() {
+    WordGame testWordGame = new WordGame("test");
+    ArrayList<String> expected = new ArrayList<String>();
+    expected.add("e");
+    testWordGame.guessLetter("e");
+    assertEquals(expected, testWordGame.getGuesses());
   }
 
   @Test
@@ -83,7 +94,7 @@ public class WordGameTest {
     testWordGame.guessLetter("k");
     testWordGame.guessLetter("l");
     testWordGame.guessLetter("n");
-    testWordGame.guessLetter("o");    
+    testWordGame.guessLetter("o");
     assertEquals(gameOverPlayerLost, testWordGame.getGameOver());
   }
 }

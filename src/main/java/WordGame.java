@@ -23,7 +23,7 @@ public class WordGame {
     Integer status = 0;
     if (getHiddenWord().indexOf("_") == -1) {
       status = 1;
-    } else if (getWrongLetterCount() == 7) {
+    } else if (getWrongLetterCount() == 6) {
       status = 2;
     }
     return status;
@@ -31,6 +31,10 @@ public class WordGame {
 
   public String getWord() {
     return mWord;
+  }
+
+  public ArrayList<String> getGuesses() {
+    return mGuesses;
   }
 
   public String getHiddenWord() {
