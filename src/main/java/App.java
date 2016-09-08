@@ -10,13 +10,15 @@ public class App {
       while (game.getGameOver() == 0) {
         runTurn(game);
       }
-      resetScreen(); 
+      resetScreen();
       if(game.getGameOver() == 1) {
         displayWin(game.getWrongLetterCount());
       } else if (game.getGameOver() == 2) {
         displayLose(game.getWrongLetterCount());
       }
-      System.out.println("Do you want to play again? [Y/N]");
+      System.out.println("Do you want to play again?");
+      System.out.println();
+      System.out.print(ConsoleUtils.bold("[Y/N]: "));
       String choice = myConsole.readLine();
       resetScreen();
       if (choice.equals("N")) {
@@ -31,7 +33,10 @@ public class App {
   public static WordGame startGame() {
     Console myConsole = System.console();
     resetScreen();
-    System.out.println("Would you like to use your own word or a random word? (Press Enter to use a Random Word.)");
+    System.out.println("Would you like to use your own word or a random word?");
+    System.out.println("(Press Enter to use a Random Word.) ");
+    System.out.println();
+    System.out.print(ConsoleUtils.bold("Word: "));
     String word = myConsole.readLine();
     WordGame game;
     if (word.equals("")){
@@ -56,11 +61,11 @@ public class App {
     Console myConsole = System.console();
     resetScreen();
     displayHangman(game.getWrongLetterCount());
-    System.out.println(game.getHiddenWord());
+    ConsoleUtils.center(ConsoleUtils.bold(game.getHiddenWord()));
     System.out.println();
     System.out.print("Letters used: ");
     for (String letter : game.getGuesses()) {
-      System.out.print(ConsoleUtils.underline(letter) + " ");
+      System.out.print(ConsoleUtils.redText(ConsoleUtils.underline(letter) + " "));
     }
     System.out.println();
     System.out.println();
@@ -81,23 +86,24 @@ public class App {
     ConsoleUtils.setTitle("Hangman");
     System.out.println("\033[44;37m");
 
-    System.out.println("  _______________");
-    System.out.println(" |@@@@|     |####|");
-    System.out.println(" |@@@@|     |####|");
-    System.out.println(" |@@@@|     |####|");
-    System.out.println(" \\@@@@|     |####/");
-    System.out.println("  \\@@@|     |###/");
-    System.out.println("  ` @@|_____|##'");
-    System.out.println("        (O)");
-    System.out.println("     .-'''''-.");
-    System.out.println("   .'  * * *  `.");
-    System.out.println("  :  *       *  :");
-    System.out.println(" : ~   Y O U   ~ :");
-    System.out.println(" : ~   W I N   ~ :");
-    System.out.println("  :  *       *  :");
-    System.out.println("   `.  * * *  .'");
-    System.out.println("     `-.....-'");
-    // System.out.println("You Win.");
+    ConsoleUtils.center("_______________");
+    ConsoleUtils.center("|@@@@|     |####|");
+    ConsoleUtils.center("|@@@@|     |####|");
+    ConsoleUtils.center("|@@@@|     |####|");
+    ConsoleUtils.center("\\@@@@|     |####/");
+    ConsoleUtils.center("\\@@@|     |###/");
+    ConsoleUtils.center("` @@|_____|##'");
+    ConsoleUtils.center("(O)");
+    ConsoleUtils.center(".-'''''-.");
+    ConsoleUtils.center(".'  * * *  `.");
+    ConsoleUtils.center(":  *       *  :");
+    ConsoleUtils.center(": ~   Y O U   ~ :");
+    ConsoleUtils.center(": ~   W I N   ~ :");
+    ConsoleUtils.center(":  *       *  :");
+    ConsoleUtils.center("`.  * * *  .'");
+    ConsoleUtils.center("`-.....-'");
+    System.out.println();
+    System.out.println();
   }
 
   public static void displayLose(Integer wrongGuesses) {

@@ -75,7 +75,9 @@ public class WordGame {
   }
 
   public void guessLetter(String guess) {
-    mGuesses.add(guess);
+    if (guess.length() == 1 && !mGuesses.contains(guess)){
+      mGuesses.add(guess);
+    }
   }
 
   public Integer getWrongLetterCount() {

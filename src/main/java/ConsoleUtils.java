@@ -31,6 +31,19 @@ public class ConsoleUtils {
     System.out.println("\033[H\033[2J");
   }
 
+  public static void center(String msg) {
+    int consoleWidth = 80;
+    int msgWidth = msg.length();
+    int start = (int)Math.floor((consoleWidth / 2) - (msgWidth / 2));
+    for (int i = 0; i < start; i++) {
+      System.out.print(" ");
+    }
+    System.out.print(msg);
+    for (int i = start + msgWidth; i < consoleWidth; i++) {
+      System.out.print(" ");
+    }
+  }
+
   public static void setTitle(String title) {
     int consoleWidth = 80;
     int titleWidth = title.length();
