@@ -97,4 +97,10 @@ public class WordGameTest {
     testWordGame.guessLetter("o");
     assertEquals(gameOverPlayerLost, testWordGame.getGameOver());
   }
+
+  @Test
+  public void pickDifficulty_selectDifficulty(){
+    WordGame testWordGame = new WordGame(1);
+    assertEqual(true, testWordGame.selectDifficulty() instanceof WordGame);
+  }
 }

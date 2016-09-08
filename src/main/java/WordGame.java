@@ -5,11 +5,36 @@ import java.util.Random;
 public class WordGame {
   String mWord;
   ArrayList<String> mGuesses;
-  String[] mWordList = {"test", "cat", "dog", "programming"};
+  String[] mWordList = {"test", "jaguar", "ceiling", "programming"};
+  String[] easy = {"sportscar", "jacket", "entertainment", "hotdog"};
+  String[] medium = {"test", "programming", "report", "football"};
+  String[] hard = {"ceiling", "apartment", "jaguar", "repartee"};
+
+
 
   public WordGame(String word) {
     mWord = word;
     mGuesses = new ArrayList<String>();
+  }
+
+  public WordGame(Integer difficulty) {
+    mGuesses = new ArrayList<String>();
+    Random myRandomGenerator = new Random();
+    Integer randomNumber;
+    switch(difficulty){
+      case 0:
+        randomNumber = myRandomGenerator.nextInt(easy.length);
+        mWord = easy[randomNumber];
+        break;
+      case 1:
+        randomNumber = myRandomGenerator.nextInt(medium.length);
+        mWord = medium[randomNumber];
+        break;
+      case 2:
+        randomNumber = myRandomGenerator.nextInt(hard.length);
+        mWord = hard[randomNumber];
+        break;
+    }
   }
 
   public WordGame() {

@@ -4,33 +4,13 @@ public class App {
   public static void main(String[] args){
     Console myConsole = System.console();
     resetScreen();
-    System.out.println("Would you like to use your own word or a random word? (Press Enter to use a Random Word.)");
-    String word = myConsole.readLine();
-    WordGame game;
-    if (word.equals("")){
-      game = new WordGame();
-    } else {
-      game = new WordGame(word);
-    }
+    WordGame game = startGame();
     boolean running = true;
     while (running) {
       while (game.getGameOver() == 0) {
-        resetScreen();
-        displayHangman(game.getWrongLetterCount());
-        System.out.println(game.getHiddenWord());
-        System.out.println();
-        System.out.print("Letters used: ");
-        for (String letter : game.getGuesses()) {
-          System.out.print(ConsoleUtils.underline(letter) + " ");
-        }
-        System.out.println();
-        System.out.println();
-        System.out.print("Guess a letter: ");
-        String pickedLetter = myConsole.readLine();
-        game.guessLetter(pickedLetter);
+        runTurn(game);
       }
-      ConsoleUtils.clearConsole();
-      ConsoleUtils.setTitle("Hangman");
+      resetScreen(); 
       if(game.getGameOver() == 1) {
         displayWin(game.getWrongLetterCount());
       } else if (game.getGameOver() == 2) {
@@ -43,15 +23,50 @@ public class App {
         running = false;
         System.out.println("Goodbye!");
       } else {
-        System.out.println("Would you like to use your own word or a random word? (Press Enter to use a Random Word.)");
-        word = myConsole.readLine();
-        if (word.equals("")){
-          game = new WordGame();
-        } else {
-          game = new WordGame(word);
-        }
+        game = startGame();
       }
     }
+  }
+
+  public static WordGame startGame() {
+    Console myConsole = System.console();
+    resetScreen();
+    System.out.println("Would you like to use your own word or a random word? (Press Enter to use a Random Word.)");
+    String word = myConsole.readLine();
+    WordGame game;
+    if (word.equals("")){
+      System.out.println("Pick your difficulty: [pansy/regular/hardcore]");
+      String difficulty = myConsole.readLine();
+      if (difficulty.equals("pansy")) {
+        game = new WordGame(0);
+      } else if (difficulty.equals("regular")) {
+        game = new WordGame(1);
+      } else if (difficulty.equals("hardcore")) {
+        game = new WordGame(2);
+      } else {
+        game = new WordGame();
+      }
+    } else {
+      game = new WordGame(word);
+    }
+    return game;
+  }
+
+  public static void runTurn(WordGame game) {
+    Console myConsole = System.console();
+    resetScreen();
+    displayHangman(game.getWrongLetterCount());
+    System.out.println(game.getHiddenWord());
+    System.out.println();
+    System.out.print("Letters used: ");
+    for (String letter : game.getGuesses()) {
+      System.out.print(ConsoleUtils.underline(letter) + " ");
+    }
+    System.out.println();
+    System.out.println();
+    System.out.print("Guess a letter: ");
+    String pickedLetter = myConsole.readLine();
+    game.guessLetter(pickedLetter);
   }
 
   public static void displayWin(Integer wrongGuesses) {
