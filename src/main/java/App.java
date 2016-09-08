@@ -33,16 +33,16 @@ public class App {
   public static WordGame startGame() {
     Console myConsole = System.console();
     resetScreen();
-    ConsoleUtils.center("       _,=.=,_                              ");
-    ConsoleUtils.center("     ,'=.     `\\___,                        ");
-    ConsoleUtils.center("    /    \\  (0     |        __ _            ");
-    ConsoleUtils.center("   /      \\     ___/       /| | ''--.._     ");
-    ConsoleUtils.center("   |      |     \\)         || |    ===|\\    ");
-    ConsoleUtils.center("   ',   _/    .--'         || |   ====| |   ");
-    ConsoleUtils.center("     `\"`;    (             || |    ===|/    ");
-    ConsoleUtils.center("        [[[[]]_..,_        \\|_|_..--;\"`     ");
-    ConsoleUtils.center("        /  .--\"\"``\\\\          __)__|_       ");
-    ConsoleUtils.center("      .'       .\\,,||___     |        |     ");
+    ConsoleUtils.center("        _,=.=,_                              ");
+    ConsoleUtils.center("      ,'=.     `\\___,                        ");
+    ConsoleUtils.center("     /    \\  (0     |        __ _            ");
+    ConsoleUtils.center("    /      \\     ___/       /| | ''--.._     ");
+    ConsoleUtils.center("    |      |     \\)         || |    ===|\\    ");
+    ConsoleUtils.center("    ',   _/    .--'         || |   ====| |   ");
+    ConsoleUtils.center("      `\"`;    (             || |    ===|/    ");
+    ConsoleUtils.center("         [[[[]]_..,_        \\|_|_..--;\"`     ");
+    ConsoleUtils.center("         /  .--\"\"``\\\\          __)__|_       ");
+    ConsoleUtils.center("       .'       .\\,,||___     |        |     ");
     ConsoleUtils.center("(   .'     -\"\"`| `\"\";___)---'|________|__ ");
     ConsoleUtils.center("|\\ /         __|   [_____________________]");
     ConsoleUtils.center(" \\|       .-'  `\\        |.----------.|   ");
@@ -56,13 +56,13 @@ public class App {
     String word = myConsole.readLine();
     WordGame game;
     if (word.equals("")){
-      System.out.println("Pick your difficulty: [pansy/regular/hardcore]");
+      System.out.println("Pick your difficulty: [easy/regular/hardcore]");
       String difficulty = myConsole.readLine();
-      if (difficulty.equals("pansy")) {
+      if (difficulty.equals("easy") || difficulty.equals("e")) {
         game = new WordGame(0);
-      } else if (difficulty.equals("regular")) {
+      } else if (difficulty.equals("regular") || difficulty.equals("r")) {
         game = new WordGame(1);
-      } else if (difficulty.equals("hardcore")) {
+      } else if (difficulty.equals("hardcore") || difficulty.equals("h")) {
         game = new WordGame(2);
       } else {
         game = new WordGame();
