@@ -33,6 +33,22 @@ public class App {
   public static WordGame startGame() {
     Console myConsole = System.console();
     resetScreen();
+    ConsoleUtils.center("       _,=.=,_                              ");
+    ConsoleUtils.center("     ,'=.     `\\___,                        ");
+    ConsoleUtils.center("    /    \\  (0     |        __ _            ");
+    ConsoleUtils.center("   /      \\     ___/       /| | ''--.._     ");
+    ConsoleUtils.center("   |      |     \\)         || |    ===|\\    ");
+    ConsoleUtils.center("   ',   _/    .--'         || |   ====| |   ");
+    ConsoleUtils.center("     `\"`;    (             || |    ===|/    ");
+    ConsoleUtils.center("        [[[[]]_..,_        \\|_|_..--;\"`     ");
+    ConsoleUtils.center("        /  .--\"\"``\\\\          __)__|_       ");
+    ConsoleUtils.center("      .'       .\\,,||___     |        |     ");
+    ConsoleUtils.center("(   .'     -\"\"`| `\"\";___)---'|________|__ ");
+    ConsoleUtils.center("|\\ /         __|   [_____________________]");
+    ConsoleUtils.center(" \\|       .-'  `\\        |.----------.|   ");
+    ConsoleUtils.center("  \\  _           |       ||          ||   ");
+    ConsoleUtils.center("   (          .-' )      ||          ||   ");
+    ConsoleUtils.center("`    \"\"\"\"\"\"\"\"\"\"\"\"`      \"\"\"         \"\"\"   ");
     System.out.println("Would you like to use your own word or a random word?");
     System.out.println("(Press Enter to use a Random Word.) ");
     System.out.println();
